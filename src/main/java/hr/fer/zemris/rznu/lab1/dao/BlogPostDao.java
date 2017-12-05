@@ -10,4 +10,6 @@ import java.util.List;
 public interface BlogPostDao extends JpaRepository<BlogPost, Long> {
 
     List<BlogPost> findAllByAuthor_Username(String username);
+
+    BlogPost findByAuthor_UsernameAndId(String username, Long id);
 }
