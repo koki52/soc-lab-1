@@ -18,10 +18,10 @@ public class BlogComment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private User author;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private BlogPost blogPost;
 
     private String body;

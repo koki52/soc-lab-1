@@ -15,7 +15,7 @@ public class BlogCommentDto {
     private String author;
     private String body;
 
-    public BlogCommentDto fromBlogComment(BlogComment comment) {
+    public static BlogCommentDto fromBlogComment(BlogComment comment) {
         return BlogCommentDto.builder()
                 .author(comment.getAuthor().getUsername())
                 .body(comment.getBody())
