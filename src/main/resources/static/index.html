@@ -129,31 +129,31 @@
             <th>Description</th>
         </tr>
         <tr>
-            <td>/api/{author}/posts</td>
+            <td>/api/users//{author}/posts</td>
             <td>GET</td>
             <td>post author username</td>
             <td>Gets a list of all posts by the given author</td>
         </tr>
         <tr>
-            <td>/api/{author}/posts/{id}</td>
+            <td>/api/users/{author}/posts/{id}</td>
             <td>GET</td>
             <td>post author username, post id</td>
             <td>Gets a post under the given id from the given author, if it exists</td>
         </tr>
         <tr>
-            <td>/api/{author}/posts</td>
+            <td>/api/users/{author}/posts</td>
             <td>POST</td>
             <td>post author username, post title, post body</td>
             <td>Creates a new post, if the current user is the author</td>
         </tr>
         <tr>
-            <td>/api/{author}/posts/{id}</td>
+            <td>/api/users/{author}/posts/{id}</td>
             <td>PUT</td>
             <td>post author username, post id, post title, post body</td>
             <td>Updates the post, if the current user is the author and if the post exists</td>
         </tr>
         <tr>
-            <td>/api/{author}/posts/{id}</td>
+            <td>/api/users/{author}/posts/{id}</td>
             <td>DELETE</td>
             <td>post author username, post id</td>
             <td>Deletes the post, if the current user is the author and the post exists</td>
@@ -169,31 +169,31 @@
             <th>Description</th>
         </tr>
         <tr>
-            <td>/api/{author}/posts/{postId}/comments</td>
+            <td>/api/users/{author}/posts/{postId}/comments</td>
             <td>GET</td>
             <td>post author username, post id</td>
             <td>Gets a list of all comments on the post identified by parameters</td>
         </tr>
         <tr>
-            <td>/api/{author}/posts/{postId}/comments/{commentId}</td>
+            <td>/api/users/{author}/posts/{postId}/comments/{commentId}</td>
             <td>GET</td>
             <td>post author username, post id, commentId</td>
             <td>Gets a comment identified by the given parameters, if it exists</td>
         </tr>
         <tr>
-            <td>/api/{author}/posts/{postId}/comments</td>
+            <td>/api/users/{author}/posts/{postId}/comments</td>
             <td>POST</td>
             <td>post author username, post id, comment body</td>
             <td>Creates a new comment with the given body on the post identified by parameters</td>
         </tr>
         <tr>
-            <td>/api/{author}/posts/{postId}/comments/{commentId}</td>
+            <td>/api/users/{author}/posts/{postId}/comments/{commentId}</td>
             <td>PUT</td>
             <td>post author username, post id, comment id, comment body</td>
             <td>Updates the comment identified by parameters with the given body</td>
         </tr>
         <tr>
-            <td>/api/{author}/posts/{postId}/comments/{commentId}</td>
+            <td>/api/users/{author}/posts/{postId}/comments/{commentId}</td>
             <td>DELETE</td>
             <td>post author username, post id, comment id</td>
             <td>Deletes the comment, if the current user is the author and the post exists</td>

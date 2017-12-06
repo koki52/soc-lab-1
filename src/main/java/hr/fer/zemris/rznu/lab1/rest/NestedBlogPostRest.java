@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "/api/{user}/posts")
+@RequestMapping(path = "/api/users/{user}/posts")
 public class NestedBlogPostRest {
 
     private UserUtil userUtil;

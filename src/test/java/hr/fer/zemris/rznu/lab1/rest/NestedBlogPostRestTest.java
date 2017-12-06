@@ -55,7 +55,7 @@ public class NestedBlogPostRestTest {
         when(userDao.findByUsername("perica")).thenReturn(user);
         when(blogPostDao.findAllByAuthor_Username("perica"))
                 .thenReturn(posts);
-        mockMvc.perform(get("/api/perica/posts"))
+        mockMvc.perform(get("/api/users/perica/posts"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(content().json(mapper.writeValueAsString(toDto(posts))));
@@ -68,7 +68,7 @@ public class NestedBlogPostRestTest {
         BlogPost post = BlogPost.builder().author(user).id(1L).title("Blah").body("Yaargh!").build();
         when(userDao.findByUsername("perica")).thenReturn(user);
         when(blogPostDao.findByAuthor_UsernameAndId("perica", 1L)).thenReturn(post);
-        mockMvc.perform(get("/api/perica/posts/1"))
+        mockMvc.perform(get("/api/users/perica/posts/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(content().json(mapper.writeValueAsString(BlogPostDto.fromBlogPost(post))));
@@ -80,7 +80,7 @@ public class NestedBlogPostRestTest {
         User user = getMockUser();
         when(userUtil.getCurrentUser()).thenReturn(user);
         BlogPost blogPost = BlogPost.builder().title("bla").body("lala").build();
-        mockMvc.perform(post("/api/perica/posts")
+        mockMvc.perform(post("/api/users/perica/posts")
                 .content(mapper.writeValueAsString(blogPost))
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isCreated());
@@ -95,7 +95,7 @@ public class NestedBlogPostRestTest {
         BlogPost blogPost = BlogPost.builder().title("bla").body("lala").build();
         when(blogPostDao.findByAuthor_UsernameAndId("perica", 1L))
                 .thenReturn(blogPost);
-        mockMvc.perform(put("/api/perica/posts/1")
+        mockMvc.perform(put("/api/users/perica/posts/1")
                 .content(mapper.writeValueAsString(blogPost))
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
@@ -110,7 +110,7 @@ public class NestedBlogPostRestTest {
         BlogPost blogPost = BlogPost.builder().author(user).title("bla").body("lala").build();
         when(blogPostDao.findOne(1L))
                 .thenReturn(blogPost);
-        mockMvc.perform(delete("/api/perica/posts/1"))
+        mockMvc.perform(delete("/api/users/perica/posts/1"))
                 .andExpect(status().isOk());
         verify(blogPostDao, times(1)).delete(any(BlogPost.class));
     }
@@ -124,7 +124,7 @@ public class NestedBlogPostRestTest {
         BlogPost blogPost = BlogPost.builder().author(author).title("bla").body("lala").build();
         when(blogPostDao.findOne(1L))
                 .thenReturn(blogPost);
-        mockMvc.perform(delete("/api/perica/posts/1"))
+        mockMvc.perform(delete("/api/users/perica/posts/1"))
                 .andExpect(status().isForbidden());
         verify(blogPostDao, times(0)).delete(any(BlogPost.class));
     }

@@ -51,7 +51,7 @@ public class NestedBlogCommentRestTest {
         BlogComment comment = BlogComment.builder().author(user).body("Hello!").build();
         when(blogCommentDao.findByBlogPost_IdAndBlogPost_Author_UsernameAndId(1L, "perica",1L))
                 .thenReturn(comment);
-        mockMvc.perform(get("/api/perica/posts/1/comments/1"))
+        mockMvc.perform(get("/api/users/perica/posts/1/comments/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(content().json(mapper.writeValueAsString(BlogCommentDto.fromBlogComment(comment))));
@@ -66,7 +66,7 @@ public class NestedBlogCommentRestTest {
         List<BlogCommentDto> comments = Lists.newArrayList(BlogCommentDto.fromBlogComment(comment));
         when(blogPostDao.findByAuthor_UsernameAndId("perica", 1L)).thenReturn(post);
         when(blogCommentDao.findAllByBlogPost_Id(1L)).thenReturn(Lists.newArrayList(comment));
-        mockMvc.perform(get("/api/perica/posts/1/comments"))
+        mockMvc.perform(get("/api/users/perica/posts/1/comments"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(content().json(mapper.writeValueAsString(comments)));
@@ -81,7 +81,7 @@ public class NestedBlogCommentRestTest {
         when(blogCommentDao.findByBlogPost_IdAndBlogPost_Author_UsernameAndId(1L, "perica", 1L)).thenReturn(comment);
         when(blogPostDao.findByAuthor_UsernameAndId("perica", 1L)).thenReturn(post);
         when(userUtil.getCurrentUser()).thenReturn(user);
-        mockMvc.perform(put("/api/perica/posts/1/comments/1")
+        mockMvc.perform(put("/api/users/perica/posts/1/comments/1")
                 .content(mapper.writeValueAsString(BlogCommentDto.fromBlogComment(comment)))
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
@@ -96,7 +96,7 @@ public class NestedBlogCommentRestTest {
         when(blogPostDao.findByAuthor_UsernameAndId("perica", 1L)).thenReturn(post);
         when(blogCommentDao.findByBlogPost_IdAndBlogPost_Author_UsernameAndId(1L, "perica", 1L)).thenReturn(comment);
         when(userUtil.getCurrentUser()).thenReturn(user);
-        mockMvc.perform(delete("/api/perica/posts/1/comments/1"))
+        mockMvc.perform(delete("/api/users/perica/posts/1/comments/1"))
                 .andExpect(status().isOk());
     }
 
@@ -108,7 +108,7 @@ public class NestedBlogCommentRestTest {
         BlogComment comment = BlogComment.builder().author(user).body("Hello!").build();
         when(blogPostDao.findByAuthor_UsernameAndId("perica", 1L)).thenReturn(post);
         when(userUtil.getCurrentUser()).thenReturn(user);
-        mockMvc.perform(post("/api/perica/posts/1/comments")
+        mockMvc.perform(post("/api/users/perica/posts/1/comments")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(mapper.writeValueAsString(comment)))
                 .andExpect(status().isCreated());

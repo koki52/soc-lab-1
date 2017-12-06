@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "/api/{author}/posts/{postId}/comments")
+@RequestMapping(path = "/api/users/{author}/posts/{postId}/comments")
 public class NestedBlogCommentRest {
 
     private UserUtil userUtil;
