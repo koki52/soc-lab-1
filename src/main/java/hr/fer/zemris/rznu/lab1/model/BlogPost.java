@@ -3,7 +3,6 @@ package hr.fer.zemris.rznu.lab1.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Data
