@@ -16,18 +16,11 @@ import java.util.stream.Collectors;
 @RequestMapping(path = "/api")
 public class UserRest {
 
-    private UserUtil userUtil;
     private UserDao userDao;
 
     @Autowired
-    public UserRest(UserUtil userUtil, UserDao userDao) {
-        this.userUtil = userUtil;
+    public UserRest(UserDao userDao) {
         this.userDao = userDao;
-    }
-
-    @GetMapping("/user")
-    public User getUser() {
-        return userUtil.getCurrentUser();
     }
 
     @GetMapping("/users")
