@@ -88,7 +88,7 @@ public class NestedBlogCommentRest {
         comment.setBlogPost(post);
         blogCommentDao.save(comment);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping(path = "/{commentId}")
